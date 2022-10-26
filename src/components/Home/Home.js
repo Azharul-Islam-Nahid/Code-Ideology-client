@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -16,7 +17,7 @@ const Home = () => {
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
 
-                        <button className="btn">Get Started</button>
+                        <button className="btn"> <Link className='px-8 py-4' to='/category'>Get Started</Link></button>
                     </div>
                 </div>
             </div>
