@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/courses-categories')
+            .then(res => res.json())
+            .then(data => setCategories(data));
+    }, [])
+
+
     return (
         <div className='container mx-auto'>
             <div className="hero min-h-screen">
@@ -11,6 +21,23 @@ const Home = () => {
                         <h1 className="text-5xl font-bold">Code Ideology</h1>
                     </div>
                 </div>
+            </div>
+            <h1 className='text-3xl font-extrabold text-center m-auto mb-6'>Our courses</h1>
+            <div className="drawer-content grid lg:grid-cols-3  gap-1 ">
+                {
+                    categories.map(category => <div key={category.id} className="card mb-10 mx-auto w-80 h-max bg-base-300 shadow-xl">
+                        <figure className="pt-10">
+                            <img src={category.img} alt="Shoes" className="object-cover h-48 w-11/12" />
+                        </figure>
+                        <div className="card-body items-center text-center">
+                            <h2 className="card-title">{category?.name}</h2>
+                            <p>Total course: {category?.total}.</p>
+                            <div className="card-actions">
+                                <button className="btn btn-primary"> <Link className='px-8 py-4' to={`/category/${category.id}`}>See courses</Link></button>
+                            </div>
+                        </div>
+                    </div>)
+                }
             </div>
             <div className="hero min-h-screen" style={{ backgroundImage: `url("https://www.myworldofwork.co.uk/sites/default/files/MA2.png")` }}>
                 <div className="hero-overlay bg-opacity-30"></div>

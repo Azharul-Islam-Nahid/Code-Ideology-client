@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Categories = () => {
 
+    const courses = useLoaderData()
+
+
     const [categories, setCategories] = useState([]);
-    console.log(categories);
 
     useEffect(() => {
         fetch('http://localhost:5000/courses-categories')
@@ -20,18 +22,21 @@ const Categories = () => {
             <div className="drawer-content grid lg:grid-cols-3  gap-1 ">
                 <label htmlFor="my-drawer-2" className="btn drawer-button w-2/4 mx-auto mt-5 lg:hidden">Open sidebar</label>
                 {
-                    categories.map(category => <div key={category.id} className="card mb-10 mx-auto w-80 h-max bg-base-300 shadow-xl">
-                        <figure className="pt-10">
-                            <img src={category.img} alt="Shoes" className="rounded object-cover h-48 w-96" />
-                        </figure>
-                        <div className="card-body items-center text-center">
-                            <h2 className="card-title">{category?.name}</h2>
-                            <p>Total course: {category?.total}.</p>
-                            <div className="card-actions">
-                                <button className="btn btn-primary"> <Link className='px-8 py-4' to={`/category/${category.id}`}>See courses</Link></button>
+
+                    courses.map(course =>
+                        <div ey={course._id}
+                            course={course} className="card mb-10 mx-auto w-80 h-max bg-base-300 shadow-xl">
+                            <figure className="pt-10">
+                                <img src={course?.img} alt="Shoes" className="rounded object-cover h-60 w-full" />
+                            </figure>
+                            <div className="card-body items-center text-center">
+                                <h2 className="card-title">{course?.title}</h2>
+                                <p>Total course: { }.</p>
+                                <div className="card-actions">
+                                    <button className="btn btn-primary"> <Link className='px-8 py-4' to={`/category/${course?._id}`}>See courses</Link></button>
+                                </div>
                             </div>
-                        </div>
-                    </div>)
+                        </div>)
                 }
             </div>
             <div className="drawer-side">
