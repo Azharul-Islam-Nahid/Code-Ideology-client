@@ -1,31 +1,43 @@
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-// import { AuthContext } from '../context/UserContext';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+
 
 const Login = () => {
 
-    // const { signInUser } = useContext(AuthContext);
-    const navigate = useNavigate();
+    const { providerLogin } = useContext(AuthContext);
 
-    // const handleSubmit = e => {
-    //     e.preventDefault();
-    //     const form = e.target;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-    //     // console.log('Email = ', email + ', ', 'Password = ', password);
+    const googleProvider = new GoogleAuthProvider()
+    const githubProvider = new GithubAuthProvider()
 
-    //     signInUser(email, password)
-    //         .then(result => {
-    //             const user = result.user;
-    //             console.log(user);
-    //         })
-    //         .catch(error => {
-    //             console.error('error', error);
-    //         })
+    const HandleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error('error', error);
+            })
+    }
 
-    //     form.reset();
-    //     navigate('/');
-    // }
+    const HandleGithubSignIn = () => {
+        providerLogin(githubProvider)
+
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error('error', error);
+            })
+    }
+
+
+
+
     return (
         <div>
             <div className='hero min-h-screen bg-base-200 '>
@@ -53,11 +65,52 @@ const Login = () => {
                             </div>
                             <div className='form-control mt-6'>
                                 <button className='btn btn-primary'>Login</button>
+                                <button onClick={HandleGoogleSignIn} className="btn btn-success mt-2"><FaGoogle className='mr-5'></FaGoogle>google</button>
+                                <button onClick={HandleGithubSignIn} className="btn mt-2"><FaGithub className='mr-5'></FaGithub>github</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+            {/* 
+            const [error, setError] = useState('');
+
+    const navigate = useNavigate();
+
+    const location = useLocation();
+
+
+    const from = location.state?.from?.pathname || '/';
+
+    const { signIn, setLoading } = useContext(AuthContext);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+            .then(result => {
+                const user = result.user
+                console.log(user);
+                form.reset();
+                setError('');
+                if (user.emailVerified) {
+                    navigate(from, { replace: true });
+                }
+                else {
+                    toast.error('Please verify your email before logging in!');
+                }
+            })
+            .catch(error => {
+                console.error(error)
+                setError(error.message)
+            })
+            .finally(() => {
+                setLoading(false);
+            })
+
+    } */}
         </div>
     );
 };

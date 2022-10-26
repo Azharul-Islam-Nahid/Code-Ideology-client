@@ -27,7 +27,7 @@ const Categories = () => {
                         <div ey={course._id}
                             course={course} className="card mb-10 mx-auto w-80 h-max bg-base-300 shadow-xl">
                             <figure className="pt-10">
-                                <img src={course?.img} alt="Shoes" className="rounded object-cover h-60 w-full" />
+                                <img src={course?.img} alt="course" className="rounded object-cover h-60 w-full" />
                             </figure>
                             <div className="card-body items-center text-center">
                                 <h2 className="card-title">{course?.title}</h2>

@@ -1,6 +1,6 @@
-import React from 'react'; import { useContext } from 'react';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import React from 'react';
 import { Link } from 'react-router-dom';
+
 
 const Register = () => {
 
@@ -30,69 +30,64 @@ const Register = () => {
                                     <span className='label-text'>Password</span>
                                 </label>
                                 <input type='password' name='password' placeholder='password' className='input input-bordered' required />
+                                <div className="form-control">
+                                    <label className="label cursor-pointer">
+                                        <span className="label-text">Terms & conditions</span>
+                                        <input type="checkbox" className="checkbox checkbox-primary" />
+                                    </label>
+                                </div>
                                 <label className='label'>
                                     <Link to='/login' className='label-text-alt link link-hover text-blue-500'>Already have an account?</Link>
                                 </label>
                             </div>
                             <div className='form-control mt-6'>
-                                <button className='btn btn-primary'>Register</button><button onClick={''} className="btn btn-success mt-2"><FaGoogle className='mr-5'></FaGoogle>google</button><button onClick={''} className="btn mt-2"><FaGithub className='mr-5'></FaGithub>github</button>
+                                <button className='btn btn-primary'>Register</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            {/*
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-// import { AuthContext } from '../context/UserContext';
+
+            {/* 
+           const [error, setError] = useState('');
+
+    const navigate = useNavigate();
+
+    const location = useLocation();
 
 
-const Register = () => {
+    const from = location.state?.from?.pathname || '/';
 
-    // const { createUser, signInWithGoogle } = useContext(AuthContext);
+    const { signIn, setLoading } = useContext(AuthContext);
 
-
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
-        // const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        signIn(email, password)
+            .then(result => {
+                const user = result.user
+                console.log(user);
+                form.reset();
+                setError('');
+                if (user.emailVerified) {
+                    navigate(from, { replace: true });
+                }
+                else {
+                    toast.error('Please verify your email before logging in!');
+                }
+            })
+            .catch(error => {
+                console.error(error)
+                setError(error.message)
+            })
+            .finally(() => {
+                setLoading(false);
+            })
 
-        // console.log('Name = ', name + ', ', 'Email = ', email + ', ', 'Password = ', password);
-
-    //     createUser(email, password)
-    //         .then(result => {
-    //             const user = result.user;
-    //             console.log(user);
-    //         })
-    //         .catch(error => {
-    //             console.error('error', error);
-    //         })
-    // }
-
-    // const handleGoogleSignIn = () => {
-    //     signInWithGoogle()
-    //         .then(result => {
-    //             const user = result.user;
-    //             console.log(user);
-    //         })
-    //         .catch(error => {
-    //             console.error('error', error);
-    //         })
-    // }
-
-
-    return (
-        <div>
-            
-        </div>
-    );
-};
-
-export default Register; 
-
-*/}
+    }
+ */}
         </div>
     );
 };

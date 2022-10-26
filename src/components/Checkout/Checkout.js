@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaDownload } from 'react-icons/fa';
+import { FaCrown, FaDownload } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 
 const Checkout = () => {
@@ -13,11 +13,12 @@ const Checkout = () => {
         <div>
 
             <div className="card mb-10 mx-auto w-5/6 h-max bg-base-300 shadow-xl m-auto">
+                <button onClick={''} className="btn btn-success w-20 ml-auto mr-5 mt-5"><FaDownload></FaDownload></button>
+                <h2 className="card-title m-auto mt-8">{title}</h2>
                 <figure className="pt-10">
                     <img src={img} alt="Shoes" className="rounded object-cover h-max w-max" />
                 </figure>
                 <div className="card-body items-center text-center">
-                    <h2 className="card-title">{title}</h2>
                     <p className='font-bold'>Thank you for joining
                         <br /> Code Ideology! <br />
 
@@ -30,9 +31,7 @@ const Checkout = () => {
                         [Shop now]
 
                         You can find our privacy policy here. To unsubscribe from further marketing emails, click here.</p>
-                    <div className="card-actions">
-                        <button onClick={''} className="btn btn-success mt-2"><FaDownload className='mr-5'></FaDownload>Download PDF</button>
-                    </div>
+                    <button onClick={''} className="btn btn-primary mt-2">Get Premium!<FaCrown className='ml-5'></FaCrown></button>
                 </div>
             </div>
         </div>
