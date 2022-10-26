@@ -13,7 +13,7 @@ const Checkout = () => {
         <div>
 
             <div className="card mb-10 mx-auto w-5/6 h-max bg-base-300 shadow-xl m-auto">
-                <button onClick={''} className="btn btn-success w-20 ml-auto mr-5 mt-5"><FaDownload></FaDownload></button>
+                <button onClick='' className="btn btn-success w-20 ml-auto mr-5 mt-5"><FaDownload></FaDownload></button>
                 <h2 className="card-title m-auto mt-8">{title}</h2>
                 <figure className="pt-10">
                     <img src={img} alt="Shoes" className="rounded object-cover h-max w-max" />
@@ -31,7 +31,7 @@ const Checkout = () => {
                         [Shop now]
 
                         You can find our privacy policy here. To unsubscribe from further marketing emails, click here.</p>
-                    <button onClick={''} className="btn btn-primary mt-2">Get Premium!<FaCrown className='ml-5'></FaCrown></button>
+                    <button onClick='' className="btn btn-primary mt-2">Get Premium!<FaCrown className='ml-5'></FaCrown></button>
                 </div>
             </div>
         </div>

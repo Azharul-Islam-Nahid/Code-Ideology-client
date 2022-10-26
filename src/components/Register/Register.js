@@ -1,8 +1,73 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 
 const Register = () => {
+
+    const { createUser } = useContext(AuthContext);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, photoURL, email, password)
+
+        createUser(email, password)
+            .then(result => {
+                const user = result.user
+                console.log(user);
+                form.reset();
+                // handleProfileUpdate(name, photoUrl);
+                // handleEmailVerification();
+
+                // toast(
+                //     "Please verify your email address.\n\n Check your spam folder if you cannot find the verification mail.",
+                //     {
+                //         duration: 8000,
+                //     }
+                // );
+
+                // setError('');
+
+                // navigate('/')
+            })
+            .catch(error => {
+                console.error(error)
+                //         setError(error.message)
+            })
+        //     .finally(() => {
+        //         setLoading(false);
+        //     })
+
+    }
+
+
+    // const handleProfileUpdate = (name, photoUrl) => {
+    //     const profile = {
+    //         displayName: name,
+    //         photoURL: photoUrl
+    //     }
+    //     updateUserProfile(profile)
+    //         .then(() => { })
+    //         .catch(error => console.error(error))
+
+    // }
+
+    // const handleEmailVerification = () => {
+    //     verifyEmail()
+    //         .then(() => { })
+    //         .catch(error => console.error(error))
+
+    // }
+
+    // const handleAccepted = e => {
+    //     setAccepted(e.target.checked)
+    // }
 
 
     return (
@@ -14,12 +79,16 @@ const Register = () => {
                         <p className='py-6'>Register, using your email address and password. </p>
                     </div>
                     <div className='card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100'>
-                        <form onSubmit={''} className='card-body'>
+                        <form onSubmit={handleSubmit} className='card-body'>
                             <div className='form-control'>
                                 <label className='label'>
-                                    <span className='label-text'>User name</span>
+                                    <span className='label-text'>Full name</span>
                                 </label>
-                                <input type='text' name='name' placeholder='name' className='input input-bordered' required />
+                                <input type='text' name='name' placeholder='full name' className='input input-bordered' required />
+                                <label className='label'>
+                                    <span className='label-text'>Photo URl</span>
+                                </label>
+                                <input type='text' name='photoURL' placeholder='Photo URL' className='input input-bordered' />
                                 <label className='label'>
                                     <span className='label-text'>Email</span>
                                 </label>
@@ -33,7 +102,7 @@ const Register = () => {
                                 <div className="form-control">
                                     <label className="label cursor-pointer">
                                         <span className="label-text">Terms & conditions</span>
-                                        <input type="checkbox" className="checkbox checkbox-primary" />
+                                        <input type="checkbox" className="checkbox checkbox-primary" required />
                                     </label>
                                 </div>
                                 <label className='label'>
@@ -60,33 +129,7 @@ const Register = () => {
 
     const { signIn, setLoading } = useContext(AuthContext);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        signIn(email, password)
-            .then(result => {
-                const user = result.user
-                console.log(user);
-                form.reset();
-                setError('');
-                if (user.emailVerified) {
-                    navigate(from, { replace: true });
-                }
-                else {
-                    toast.error('Please verify your email before logging in!');
-                }
-            })
-            .catch(error => {
-                console.error(error)
-                setError(error.message)
-            })
-            .finally(() => {
-                setLoading(false);
-            })
-
-    }
+   
  */}
         </div>
     );

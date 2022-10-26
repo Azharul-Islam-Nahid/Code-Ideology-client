@@ -1,13 +1,24 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 
 const Login = () => {
 
-    const { providerLogin } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    const [error, setError] = useState('');
+    // const location = useLocation();
+
+
+    // const from = location.state?.from?.pathname || '/';
+
+
+    const { signIn, providerLogin } = useContext(AuthContext);
 
     const googleProvider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider()
@@ -36,6 +47,39 @@ const Login = () => {
     }
 
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user
+                console.log(user);
+                form.reset();
+                setError('');
+                navigate('/');
+                // if (user.emailVerified) {
+                //     navigate(from, { replace: true });
+                // }
+                // else {
+                //     toast.error('Please verify your email before logging in!');
+                // }
+            })
+            .catch(error => {
+                console.error(error)
+                setError(error.message)
+            })
+        // .finally(() => {
+        //     setLoading(false);
+        // })
+
+    }
+
+
 
 
     return (
@@ -47,7 +91,7 @@ const Login = () => {
                         <p className='py-6'>Login,using your email address and password. </p>
                     </div>
                     <div className='card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100'>
-                        <form onSubmit={''} className='card-body'>
+                        <form onSubmit={handleSubmit} className='card-body'>
                             <div className='form-control'>
                                 <label className='label'>
                                     <span className='label-text'>Email</span>
@@ -72,45 +116,6 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            {/* 
-            const [error, setError] = useState('');
-
-    const navigate = useNavigate();
-
-    const location = useLocation();
-
-
-    const from = location.state?.from?.pathname || '/';
-
-    const { signIn, setLoading } = useContext(AuthContext);
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        signIn(email, password)
-            .then(result => {
-                const user = result.user
-                console.log(user);
-                form.reset();
-                setError('');
-                if (user.emailVerified) {
-                    navigate(from, { replace: true });
-                }
-                else {
-                    toast.error('Please verify your email before logging in!');
-                }
-            })
-            .catch(error => {
-                console.error(error)
-                setError(error.message)
-            })
-            .finally(() => {
-                setLoading(false);
-            })
-
-    } */}
         </div>
     );
 };
