@@ -20,7 +20,7 @@ const Categories = () => {
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
             <div className="drawer-content grid lg:grid-cols-3  gap-1 ">
-                <label htmlFor="my-drawer-2" className="btn drawer-button w-2/4 mx-auto mt-5 lg:hidden">Open sidebar</label>
+                <label htmlFor="my-drawer-2" className="btn drawer-button w-2/4 mx-auto mt-5 mb-5 lg:hidden">Open sidebar</label>
                 {
 
                     courses.map(course =>
@@ -31,9 +31,9 @@ const Categories = () => {
                             </figure>
                             <div className="card-body items-center text-center">
                                 <h2 className="card-title">{course?.title}</h2>
-                                <p>Total course: { }.</p>
+                                <p>Course duration: {course?.duration} minutes.</p>
                                 <div className="card-actions">
-                                    <button className="btn btn-primary"> <Link className='px-8 py-4' to={`/category/${course?._id}`}>See courses</Link></button>
+                                    <button className="btn btn-primary"> <Link className='px-8 py-4' to={`/category/${course?._id}`}>Checkout</Link></button>
                                 </div>
                             </div>
                         </div>)
@@ -42,7 +42,6 @@ const Categories = () => {
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-80  bg-base-300 text-base-content">
-                    {/* <!-- Sidebar content here --> */}
                     <li>
                         {
                             categories.map(category => <li key={category.id}>
