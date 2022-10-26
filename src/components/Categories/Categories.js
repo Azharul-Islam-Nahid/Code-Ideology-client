@@ -33,7 +33,7 @@ const Categories = () => {
                                 <h2 className="card-title">{course?.title}</h2>
                                 <p>Course duration: {course?.duration} minutes.</p>
                                 <div className="card-actions">
-                                    <button className="btn btn-primary"> <Link className='px-8 py-4' to={`/category/${course?._id}`}>Checkout</Link></button>
+                                    <button className="btn btn-primary"> <Link className='px-8 py-4' to={`/courses/${course?._id}`}>Checkout</Link></button>
                                 </div>
                             </div>
                         </div>)

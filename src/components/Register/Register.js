@@ -1,4 +1,5 @@
 import React from 'react'; import { useContext } from 'react';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
@@ -34,7 +35,7 @@ const Register = () => {
                                 </label>
                             </div>
                             <div className='form-control mt-6'>
-                                <button className='btn btn-primary'>Register</button><button onClick={''} className="btn btn-success mt-2">google</button>
+                                <button className='btn btn-primary'>Register</button><button onClick={''} className="btn btn-success mt-2"><FaGoogle className='mr-5'></FaGoogle>google</button><button onClick={''} className="btn mt-2"><FaGithub className='mr-5'></FaGithub>github</button>
                             </div>
                         </form>
                     </div>
