@@ -24,7 +24,7 @@ const Categories = () => {
                 {
 
                     courses.map(course =>
-                        <div ey={course._id}
+                        <div key={course._id}
                             course={course} className="card mb-10 mx-auto w-80 h-max bg-base-300 shadow-xl">
                             <figure className="pt-10">
                                 <img src={course?.img} alt="course" className="rounded object-cover h-60 w-full" />

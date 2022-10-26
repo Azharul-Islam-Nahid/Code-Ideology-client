@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 
 const Register = () => {
+
+    const [error, setError] = useState('');
 
     const { createUser } = useContext(AuthContext);
 
@@ -21,6 +23,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user
                 console.log(user);
+                setError('');
                 form.reset();
                 // handleProfileUpdate(name, photoUrl);
                 // handleEmailVerification();
@@ -38,7 +41,7 @@ const Register = () => {
             })
             .catch(error => {
                 console.error(error)
-                //         setError(error.message)
+                setError(error.message)
             })
         //     .finally(() => {
         //         setLoading(false);
@@ -105,6 +108,9 @@ const Register = () => {
                                         <input type="checkbox" className="checkbox checkbox-primary" required />
                                     </label>
                                 </div>
+                                <label className='label-text-alt link link-hover text-red-700'>
+                                    {error}
+                                </label>
                                 <label className='label'>
                                     <Link to='/login' className='label-text-alt link link-hover text-blue-500'>Already have an account?</Link>
                                 </label>
@@ -116,21 +122,6 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-
-            {/* 
-           const [error, setError] = useState('');
-
-    const navigate = useNavigate();
-
-    const location = useLocation();
-
-
-    const from = location.state?.from?.pathname || '/';
-
-    const { signIn, setLoading } = useContext(AuthContext);
-
-   
- */}
         </div>
     );
 };

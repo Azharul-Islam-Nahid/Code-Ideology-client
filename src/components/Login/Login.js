@@ -1,8 +1,8 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 
@@ -12,13 +12,13 @@ const Login = () => {
     const navigate = useNavigate();
 
     const [error, setError] = useState('');
-    // const location = useLocation();
+    const location = useLocation();
 
 
-    // const from = location.state?.from?.pathname || '/';
+    const from = location.state?.from?.pathname || '/';
 
 
-    const { signIn, providerLogin } = useContext(AuthContext);
+    const { signIn, providerLogin, setLoading } = useContext(AuthContext);
 
     const googleProvider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider()
@@ -61,7 +61,7 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
-                navigate('/');
+                navigate(from, { replace: true });
                 // if (user.emailVerified) {
                 //     navigate(from, { replace: true });
                 // }
@@ -73,9 +73,9 @@ const Login = () => {
                 console.error(error)
                 setError(error.message)
             })
-        // .finally(() => {
-        //     setLoading(false);
-        // })
+            .finally(() => {
+                setLoading(false);
+            })
 
     }
 
@@ -103,6 +103,9 @@ const Login = () => {
                                     <span className='label-text'>Password</span>
                                 </label>
                                 <input type='password' name='password' placeholder='password' className='input input-bordered' required />
+                                <label className='label-text-alt link link-hover text-red-700'>
+                                    {error}
+                                </label>
                                 <label className='label'>
                                     <Link className='label-text-alt link link-hover text-blue-500'>Forgot password?</Link>
                                 </label>
