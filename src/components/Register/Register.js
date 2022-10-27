@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 
 const Register = () => {
+    const navigate = useNavigate();
 
     const [error, setError] = useState('');
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, verifyEmail, updateUserProfile } = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,52 +27,45 @@ const Register = () => {
                 console.log(user);
                 setError('');
                 form.reset();
-                // handleProfileUpdate(name, photoUrl);
-                // handleEmailVerification();
+                handleProfileUpdate(name, photoURL);
+                handleEmailVerification();
 
-                // toast(
-                //     "Please verify your email address.\n\n Check your spam folder if you cannot find the verification mail.",
-                //     {
-                //         duration: 8000,
-                //     }
-                // );
+                toast(
+                    "Please verify your email address.\n\n Check your spam folder if you cannot find the verification mail.",
+                    {
+                        duration: 8000,
+                    }
+                );
 
-                // setError('');
+                setError('');
 
-                // navigate('/')
+                navigate('/')
             })
             .catch(error => {
                 console.error(error)
                 setError(error.message)
             })
-        //     .finally(() => {
-        //         setLoading(false);
-        //     })
 
     }
 
 
-    // const handleProfileUpdate = (name, photoUrl) => {
-    //     const profile = {
-    //         displayName: name,
-    //         photoURL: photoUrl
-    //     }
-    //     updateUserProfile(profile)
-    //         .then(() => { })
-    //         .catch(error => console.error(error))
+    const handleProfileUpdate = (name, photoUrl) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoUrl
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error))
 
-    // }
+    }
 
-    // const handleEmailVerification = () => {
-    //     verifyEmail()
-    //         .then(() => { })
-    //         .catch(error => console.error(error))
+    const handleEmailVerification = () => {
+        verifyEmail()
+            .then(() => { })
+            .catch(error => console.error(error))
 
-    // }
-
-    // const handleAccepted = e => {
-    //     setAccepted(e.target.checked)
-    // }
+    }
 
 
     return (
@@ -102,12 +97,6 @@ const Register = () => {
                                     <span className='label-text'>Password</span>
                                 </label>
                                 <input type='password' name='password' placeholder='password' className='input input-bordered' required />
-                                <div className="form-control">
-                                    <label className="label cursor-pointer">
-                                        <span className="label-text">Terms & conditions</span>
-                                        <input type="checkbox" className="checkbox checkbox-primary" required />
-                                    </label>
-                                </div>
                                 <label className='label-text-alt link link-hover text-red-700'>
                                     {error}
                                 </label>
