@@ -22,12 +22,12 @@ export const routes = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <Categories></Categories>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://code-ideology-server.vercel.app/category/${params.id}`)
             },
             {
                 path: '/courses/:id',
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://code-ideology-server.vercel.app/courses/${params.id}`)
             },
             {
                 path: '/login',

@@ -108,7 +108,8 @@ const Login = () => {
                                     {error}
                                 </label>
                                 <label className='label'>
-                                    <Link className='label-text-alt link link-hover text-blue-500'>Forgot password?</Link>
+                                    <span className='label-text-alt'>Don't have an account?</span>
+                                    <Link to='/register' className='label-text-alt link link-hover text-blue-500'>register now!</Link>
                                 </label>
                             </div>
                             <div className='form-control mt-6'>
