@@ -23,17 +23,15 @@ const Header = () => {
                     </label>
                     <ul className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {user?.photoURL ?
-                            <div className="avatar">
+                            <div className="avatar tooltip tooltip-right" data-tip={user?.displayName}>
                                 <div className="mr-5 ml-5 w-10 rounded-full">
                                     <img src={user.photoURL} alt='user' />
                                 </div>
                             </div> : <FaUser className="ml-4"></FaUser>
                         }
                         {user?.uid ?
-                            <>
-                                <span className='ml-4'>{user?.displayName}</span>
-                                <Link onClick={handleLogout} className='ml-4'>Log out</Link>
-                            </>
+
+                            <Link onClick={handleLogout} className='ml-4'>Log out</Link>
                             :
                             <span>
                                 <Link className='ml-4' to='/login'>Login</Link>
@@ -58,10 +56,8 @@ const Header = () => {
             <div className="navbar-end">
                 <div className='hidden lg:flex'>
                     {user?.uid ?
-                        <>
-                            <span>{user?.displayName}</span>
-                            <Link onClick={handleLogout} className='ml-5'>Log out</Link>
-                        </>
+
+                        <Link onClick={handleLogout} className='ml-5'>Log out</Link>
                         :
                         <>
                             <Link to='/login'>Login</Link>
@@ -69,7 +65,7 @@ const Header = () => {
                         </>
                     }
                     {user?.photoURL ?
-                        <div className="avatar">
+                        <div className="avatar tooltip tooltip-bottom" data-tip={user?.displayName}>
                             <div className="mr-5 ml-5 w-10 rounded-full">
                                 <img src={user.photoURL} alt='user' />
                             </div>

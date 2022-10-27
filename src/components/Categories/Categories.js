@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FaCrown, FaDownload } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 
 const Categories = () => {
@@ -15,7 +16,7 @@ const Categories = () => {
     }, [])
 
     return (
-        <div className="drawer drawer-mobile ">
+        <div className="drawer drawer-mobile mt-10">
 
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
@@ -26,6 +27,7 @@ const Categories = () => {
                     courses.map(course =>
                         <div key={course._id}
                             course={course} className="card mb-10 mx-auto w-80 h-max bg-base-300 shadow-xl">
+                            <button className="btn btn-success w-15 ml-auto mr-2 mt-5"><FaDownload></FaDownload></button>
                             <figure className="pt-10">
                                 <img src={course?.img} alt="course" className="rounded object-cover h-60 w-full" />
                             </figure>
@@ -33,7 +35,7 @@ const Categories = () => {
                                 <h2 className="card-title">{course?.title}</h2>
                                 <p>Course duration: {course?.duration} minutes.</p>
                                 <div className="card-actions">
-                                    <button className="btn btn-primary"> <Link className='px-8 py-4' to={`/courses/${course?._id}`}>Checkout</Link></button>
+                                    <button className="btn btn-primary"> <Link className='px-8 py-4 flex' to={`/courses/${course?._id}`}>Get Premium!<FaCrown className='ml-4'></FaCrown> </Link></button>
                                 </div>
                             </div>
                         </div>)

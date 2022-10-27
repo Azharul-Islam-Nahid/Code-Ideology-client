@@ -44,7 +44,7 @@ const Home = () => {
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
 
-                        <button className="btn"> <Link className='px-8 py-4' to='/category'>Get Started</Link></button>
+                        <button className="btn"> <Link className='px-8 py-4' to='/category/01'>Get Started</Link></button>
                     </div>
                 </div>
             </div>

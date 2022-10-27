@@ -1,8 +1,20 @@
-import React from 'react';
-import { FaCrown, FaDownload } from 'react-icons/fa';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { FaCartPlus } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+
+
 
 const Checkout = () => {
+
+    const toastMessage = () => {
+        toast.success('Added to cart successfully');
+    }
+
+
+
+    const { user } = useContext(AuthContext);
 
     const course = useLoaderData();
 
@@ -13,7 +25,6 @@ const Checkout = () => {
         <div>
 
             <div className="card mb-10 mx-auto w-5/6 h-max bg-base-300 shadow-xl m-auto">
-                <button className="btn btn-success w-20 ml-auto mr-5 mt-5"><FaDownload></FaDownload></button>
                 <h2 className="card-title m-auto mt-8">{title}</h2>
                 <figure className="pt-10">
                     <img src={img} alt="Shoes" className="rounded object-cover h-max w-max" />
@@ -22,17 +33,17 @@ const Checkout = () => {
                     <p className='font-bold'>Thank you for joining
                         <br /> Code Ideology! <br />
 
-                        THANK YOU
+                        Thank You, {user?.displayName}.<br />
 
-                        We have added you to our mailing list. You will be among the first people to get all of our special offers, newest updates, and announcements. We will do our best not to bore you with marketing emails!
+                        We have added your mail: {user?.email}, to our mailing list. You will be among the first people to get all of our special offers, newest updates, and announcements. We will do our best not to bore you with marketing emails!
 
                         As an added bonus, click on the button below or use code CODE:NOOBCOODER20 to get a 20% discount off your next purchase.
 
                         [Shop now]
 
                         You can find our privacy policy here. To unsubscribe from further marketing emails, click here.</p>
-                    <button className="btn btn-primary mt-2">Get Premium!<FaCrown className='ml-5'></FaCrown></button>
                 </div>
+                <button onClick={toastMessage} className="btn btn-primary">Buy Now!<FaCartPlus className='ml-4'></FaCartPlus></button>
             </div>
         </div>
     );
