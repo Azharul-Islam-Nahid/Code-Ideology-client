@@ -24,12 +24,12 @@ const Checkout = () => {
 
         <div>
 
-            <div className="card mb-10 mx-auto w-5/6 h-max bg-base-300 shadow-xl m-auto">
+            <div className="card mt-10 mx-auto w-5/6 h-max bg-base-300 shadow-xl m-auto dark:bg-slate-800 dark:text-white">
                 <h2 className="card-title m-auto mt-8">{title}</h2>
                 <figure className="pt-10">
                     <img src={img} alt="Shoes" className="rounded object-cover h-max w-max" />
                 </figure>
-                <div className="card-body items-center text-center">
+                <div className="card-body dark:bg-slate-800 dark:text-white items-center text-center">
                     <p className='font-bold'>Thank you for joining
                         <br /> Code Ideology! <br />
 

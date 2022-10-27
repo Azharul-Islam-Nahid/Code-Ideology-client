@@ -13,7 +13,7 @@ const Home = () => {
 
 
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto bg-white dark:bg-black'>
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row">
                     <img className='w-6/12' src='https://cdn-icons-png.flaticon.com/512/4762/4762311.png' alt='' />
@@ -23,9 +23,9 @@ const Home = () => {
                 </div>
             </div>
             <h1 className='text-3xl font-extrabold text-center m-auto mb-6'>Our courses</h1>
-            <div className="drawer-content grid lg:grid-cols-3  gap-1 ">
+            <div className="drawer-content grid lg:grid-cols-3  gap-1 bg-white dark:bg-black">
                 {
-                    categories.map(category => <div key={category.id} className="card mb-10 mx-auto w-80 h-max bg-base-300 shadow-xl">
+                    categories.map(category => <div key={category.id} className="card mb-10 mx-auto w-80 h-max bg-base-300 dark:bg-slate-600 shadow-xl">
                         <figure className="pt-10">
                             <img src={category.img} alt="Shoes" className="object-cover h-48 w-11/12" />
                         </figure>

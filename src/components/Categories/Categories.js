@@ -22,7 +22,7 @@ const Categories = () => {
     }, [])
 
     return (
-        <div className="drawer drawer-mobile mt-10">
+        <div className="drawer  drawer-mobile mt-10">
 
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
@@ -32,7 +32,7 @@ const Categories = () => {
 
                     courses.map(course =>
                         <div ref={ref} key={course._id}
-                            course={course} className="card mb-10 mx-auto w-80 h-max bg-base-300 shadow-xl">
+                            course={course} className="card mb-10 mx-auto w-80 h-max bg-base-300 shadow-xl dark:bg-slate-800 dark:text-white">
                             <Pdf targetRef={ref} filename="code-example.pdf">
                                 {({ toPdf }) => <button onClick={toPdf} className="btn btn-success w-15 ml-auto mr-2 mt-5"><FaDownload></FaDownload></button>}
                             </Pdf>
@@ -50,9 +50,9 @@ const Categories = () => {
                         </div>)
                 }
             </div>
-            <div className="drawer-side">
+            <div className="drawer-side ">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 overflow-y-auto w-80  bg-base-300 text-base-content">
+                <ul className="menu p-4 overflow-y-auto w-80  bg-base-300 text-base-content dark:bg-slate-800 dark:text-white">
                     <li>
                         {
                             categories.map(category => <li key={category.id}>

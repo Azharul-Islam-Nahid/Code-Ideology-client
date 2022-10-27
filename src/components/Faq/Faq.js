@@ -2,15 +2,15 @@ import React from 'react';
 
 const Faq = () => {
     return (
-        <div className="m-auto lg:w-9/12">
+        <div className="mx-auto mt-30 lg:w-9/12 ">
             <div
                 tabIndex={0}
-                className="collapse collapse-arrow border border-base-300 bg-base-100 "
+                className="collapse collapse-arrow border border-base-300 bg-base-100 dark:bg-slate-800 dark:text-white"
             >
-                <div className="collapse-title text-xl font-medium">
+                <div className="collapse-title text-xl font-medium dark:bg-slate-800 dark:text-white">
                     What is Code Ideology's Free Courses initiative all about?
                 </div>
-                <div className="collapse-content text-justify">
+                <div className="collapse-content text-justify dark:bg-slate-800 dark:text-white">
                     <p tabIndex={0}>
                         {" "}
                         What the world is experiencing today is a truly unprecedented
@@ -25,12 +25,13 @@ const Faq = () => {
             </div>
             <div
                 tabIndex={0}
-                className="collapse collapse-arrow border border-base-300 bg-base-100 "
+                className="collapse collapse-arrow border border-base-300 bg-base-100 
+                dark:bg-slate-800 dark:text-white"
             >
-                <div className="collapse-title text-xl font-medium">
+                <div className="collapse-title text-xl font-medium dark:bg-slate-800 dark:text-white">
                     Will I have to pay anything to start learning?
                 </div>
-                <div className="collapse-content">
+                <div className="collapse-content dark:bg-slate-800 dark:text-white">
                     <p tabIndex={0}>
                         {" "}
                         You can choose any number of Programs from any of the 60+ programs
@@ -41,7 +42,7 @@ const Faq = () => {
             </div>
             <div
                 tabIndex={0}
-                className="collapse collapse-arrow border border-base-300 bg-base-100 "
+                className="collapse collapse-arrow border border-base-300 bg-base-100  dark:bg-slate-800 dark:text-white"
             >
                 <div className="collapse-title text-xl font-medium">
                     Who should sign up?
@@ -69,7 +70,7 @@ const Faq = () => {
             </div>
             <div
                 tabIndex={0}
-                className="collapse collapse-arrow border border-base-300 bg-base-100 "
+                className="collapse collapse-arrow border border-base-300 bg-base-100 dark:bg-slate-800 dark:text-white"
             >
                 <div className="collapse-title text-xl font-medium">
                     Will I get a certificate?

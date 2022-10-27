@@ -2,6 +2,23 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+* Project name: Code Ideology , education based react single page web app
+
+* CSS component library used Tailwind & Daisy UI .
+
+* Authenticated using google firebase.
+
+* Added Private route.
+
+* User friendly Interface.
+
+* Enforced mail verification system.
+
+* Fully desktop & mobile responsive site. 
+
+* PDF download option added. 
+
+
 ## Available Scripts
 
 In the project directory, you can run:
