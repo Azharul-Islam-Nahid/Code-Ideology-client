@@ -13,10 +13,10 @@ const Home = () => {
 
 
     return (
-        <div className='container mx-auto bg-white dark:bg-black'>
+        <div className='container mt-10 mx-auto bg-white dark:bg-black'>
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row">
-                    <img className='w-6/12' src='https://cdn-icons-png.flaticon.com/512/4762/4762311.png' alt='' />
+                    <img className='w-6/12' src='https://i.ibb.co/FWPj5kx/4762311.png' alt='logo' />
                     <div>
                         <h1 className="text-5xl font-bold">Code Ideology</h1>
                     </div>
@@ -25,21 +25,21 @@ const Home = () => {
             <h1 className='text-3xl font-extrabold text-center m-auto mb-6'>Our courses</h1>
             <div className="drawer-content grid lg:grid-cols-3  gap-1 bg-white dark:bg-black">
                 {
-                    categories.map(category => <div key={category.id} className="card mb-10 mx-auto w-80 h-max bg-base-300 dark:bg-slate-600 shadow-xl">
+                    categories.map(category => <div key={category?.id} className="card mb-10 mx-auto w-80 h-max bg-base-300 dark:bg-slate-600 shadow-xl">
                         <figure className="pt-10">
-                            <img src={category.img} alt="Shoes" className="object-cover h-48 w-11/12" />
+                            <img src={category?.img} alt="Shoes" className="object-cover h-48 w-11/12" />
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">{category?.name}</h2>
                             <p>Total course: {category?.total}.</p>
                             <div className="card-actions">
-                                <button className="btn btn-primary"> <Link className='px-8 py-4' to={`/category/${category.id}`}>See courses</Link></button>
+                                <button className="btn btn-primary"> <Link className='px-8 py-4' to={`/category/${category?.id}`}>See courses</Link></button>
                             </div>
                         </div>
                     </div>)
                 }
             </div>
-            <div className="hero min-h-screen" style={{ backgroundImage: `url("https://www.myworldofwork.co.uk/sites/default/files/MA2.png")` }}>
+            <div className="hero min-h-screen" style={{ backgroundImage: `url("https://i.ibb.co/74kWFPH/MA2.png")` }}>
                 <div className="hero-overlay bg-opacity-30"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
@@ -60,7 +60,7 @@ const Home = () => {
 
 
 
-                We have collected ﻿and curated the most important Code Ideology concepts, tips and lessons learned into one place to make it easier and faster for you to learn.
+                We have collected and curated the most important Code Ideology concepts, tips and lessons learned into one place to make it easier and faster for you to learn.
 
 
 
